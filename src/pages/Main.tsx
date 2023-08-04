@@ -2,35 +2,36 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button, Input } from "antd";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import { log } from "console";
 
 const Main: React.FC<any> = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
   const [contents, setContents] = useState<string>("");
   const [email, setEmail] = useState("");
 
-  const checkEmail = email;
   const fetchData = async () => {
     // TODO: 데이터베이스에서 boards 리스트 가져오기
     try {
       const { data }: any = await axios.get("http://localhost:4000/boards");
-      console.log("log==>", data);
-
+      console.log("data", data);
       // TODO: 가져온 결과 배열을 data state에 set 하기
       setData(data);
       const email: any = localStorage.getItem("email");
+      console.log("email", data);
+
       setEmail(email);
     } catch (error) {
       // TODO: 네트워크 등 기타 문제인 경우, "일시적인 오류가 발생하였습니다. 고객센터로 연락주세요." alert
       alert("일시적인 오류가 발생하였습니다. 고객센터로 연락주세요.");
     }
   };
-
+  console.log(1);
   useEffect(() => {
     // TODO: 해당 useEffect는 최초 마운트시에만 동작하게 제어
+    console.log(2);
+
     fetchData();
   }, []);
+  console.log(3);
 
   const handleBoardSubmit = async (e: any) => {
     // alert("TODO 요구사항에 맞추어 기능을 완성해주세요.");
@@ -73,13 +74,15 @@ const Main: React.FC<any> = () => {
         />
       </StyledForm>
       <ListWrapper>
-        {data.map((item: any, index) => (
+        {data.map((item: any, index: any) => (
           <ListItem key={item.id}>
             <span>
               {index + 1}. {item.contents}
             </span>
             {/* // TODO: 로그인 한 user의 이메일과 일치하는 경우에만 삭제버튼 보이도록 제어 */}
-            {checkEmail && <Button>삭제</Button>}
+            {item.email === localStorage.getItem("email") && (
+              <Button>삭제</Button>
+            )}
           </ListItem>
         ))}
       </ListWrapper>
