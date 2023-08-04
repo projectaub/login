@@ -39,6 +39,41 @@
       "email": "asdf",
       "password": "123",
       "id": 8
+    },
+    {
+      "email": "asdfa1241231541@asdf.com",
+      "password": "1234",
+      "id": 9
+    },
+    {
+      "email": "aa@gmail.com",
+      "password": "123123",
+      "id": 10
+    },
+    {
+      "email": "aa1@gmail.com",
+      "password": "123123",
+      "id": 11
+    },
+    {
+      "email": "aa12@gmail.com",
+      "password": "123123",
+      "id": 12
+    },
+    {
+      "email": "ab@gmail.com",
+      "password": "123123",
+      "id": 13
+    },
+    {
+      "email": "aaa@gmail.com",
+      "password": "123",
+      "id": 14
+    },
+    {
+      "email": "aaa1@gmail.com",
+      "password": "123",
+      "id": 15
     }
   ],
   "boards": [
@@ -95,6 +130,24 @@
       "contents": "asdfasdf",
       "isDeleted": false,
       "id": 9
+    },
+    {
+      "email": "test@gmail.com",
+      "contents": "12412335151",
+      "isDeleted": false,
+      "id": 10
+    },
+    {
+      "email": "test@gmail.com",
+      "contents": "ㅋㅋㅎㄴㄷㄹ23412341",
+      "isDeleted": false,
+      "id": 11
+    },
+    {
+      "email": "test@gmail.com",
+      "contents": "4123124321651",
+      "isDeleted": false,
+      "id": 12
     }
   ]
 }
