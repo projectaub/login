@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button, Input } from "antd";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import shortid from "shortid";
 
-const Main: React.FC<any> = () => {
+const Comments: React.FC<any> = () => {
   const [data, setData] = useState<any>([]);
   const [contents, setContents] = useState<string>("");
   const [email, setEmail] = useState("");
+  const { id } = useParams();
   const navigate = useNavigate();
   const fetchData = async () => {
     // TODO: 데이터베이스에서 boards 리스트 가져오기
     try {
-      const { data }: any = await axios.get("http://localhost:4000/boards");
+      const { data }: any = await axios.get("http://localhost:4000/reviews");
       console.log("data", data);
       // TODO: 가져온 결과 배열을 data state에 set 하기
       setData(data);
@@ -39,7 +40,8 @@ const Main: React.FC<any> = () => {
     e.preventDefault();
     // TODO: 이메일과 contents를 이용하여 post 요청 등록(isDeleted 기본값은 false)
     try {
-      await axios.post("http://localhost:4000/boards", {
+      await axios.post("http://localhost:4000/reviews", {
+        boardId: shortid.generate(),
         email: email,
         contents: contents,
         isDeleted: false,
@@ -76,13 +78,16 @@ const Main: React.FC<any> = () => {
       alert("일시적인 오류가 발생하였습니다. 고객센터로 연락주세요.");
     }
   };
+  const detailButton = (itemId: any) => {
+    navigate(`/detail/${itemId}`);
+  };
 
   return (
     <MainWrapper>
-      <h1>메인 리스트 페이지</h1>
+      <h1>댓글달아주세요</h1>
       <StyledForm onSubmit={handleBoardSubmit}>
         <StyledInput
-          placeholder="방명록을 입력해주세요."
+          placeholder="댓글입력해주세요"
           value={contents}
           onChange={handleInputChange}
         />
@@ -90,14 +95,13 @@ const Main: React.FC<any> = () => {
       <ListWrapper>
         {data
           .filter((item: any) => {
-            return item.isDeleted === false;
+            return item.id == id;
           })
           .map((item: any, index: any) => (
             <ListItem key={item.id}>
-              <span>
-                {index + 1}.
-                <Link to={`/detail/${item.id}`}>{item.contents}</Link>
-              </span>
+              <button onClick={() => detailButton(item.id)}>
+                {index + 1}. {item.contents}
+              </button>
               {/* // TODO: 로그인 한 user의 이메일과 일치하는 경우에만 삭제버튼 보이도록 제어 */}
               {item.email === localStorage.getItem("email") && (
                 <Button onClick={() => handleRemoveButton(item.id)}>
@@ -111,7 +115,7 @@ const Main: React.FC<any> = () => {
   );
 };
 
-export default Main;
+export default Comments;
 
 const MainWrapper = styled.div`
   display: flex;

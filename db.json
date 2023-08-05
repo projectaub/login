@@ -1,4 +1,13 @@
 {
+  "reviews": [
+    {
+      "boardId": "FU9SjlL7z",
+      "email": "aa12@gmail.com",
+      "contents": "ㅁㅈㄷㄻㄴㅇㄻㅈ",
+      "isDeleted": false,
+      "id": 1
+    }
+  ],
   "users": [
     {
       "email": "asdfasdf@asdf.com",
@@ -152,7 +161,7 @@
     {
       "email": "aa12@gmail.com",
       "contents": "ㅁㄴㅇㄻㄷㄹ",
-      "isDeleted": false,
+      "isDeleted": true,
       "id": 13
     },
     {
@@ -163,8 +172,38 @@
     {
       "email": "aa12@gmail.com",
       "contents": "ㅁㄴㅇㄻㅈㄷㄹ",
-      "isDeleted": false,
+      "isDeleted": true,
       "id": 15
+    },
+    {
+      "email": "aa12@gmail.com",
+      "contents": "ㅁㄻㅈㄷㄻㅈㅇㄻㅈㄷ",
+      "isDeleted": true,
+      "id": 16
+    },
+    {
+      "email": "aa12@gmail.com",
+      "contents": "ㅁㄻㅈㄷㄻㅈㄷㄹ",
+      "isDeleted": true,
+      "id": 17
+    },
+    {
+      "email": "aa12@gmail.com",
+      "contents": "ㅁㄴㅇㄻㅈㄷㄻㄴㅇㄻㅈㄷㄹ",
+      "isDeleted": true,
+      "id": 18
+    },
+    {
+      "email": "aa12@gmail.com",
+      "contents": "ㅁㄴㅇㄻㄷㅎㅁ",
+      "isDeleted": true,
+      "id": 19
+    },
+    {
+      "email": "aa12@gmail.com",
+      "contents": "ㅁㅎㅈㄷㄻㅈㄷㄹ",
+      "isDeleted": false,
+      "id": 20
     }
   ]
 }
